@@ -1,0 +1,10 @@
+{
+	// statusbar
+	"statusbar_branch": false,
+
+	// statusbar
+	"statusbar_status": false,
+
+	// use the panel for diff output, rather than a new scratch window (new tab)
+	"diff_panel": true
+}

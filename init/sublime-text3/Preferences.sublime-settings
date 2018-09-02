@@ -1,0 +1,10 @@
+{
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "SoDaReloaded Dark.sublime-theme",
+	"trim_trailing_white_space_on_save": true
+}

@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Path configuration
+export PATH="./"
+export PATH="/bin:$PATH"
+export PATH="/sbin:$PATH"
+export PATH="/usr/bin:$PATH"
+export PATH="/usr/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+# Terminal Configuration
+export EDITOR=vi
+
+# Retrieve the operating system information.
+OS=`uname`
+
+# Set OSX specific aliases.
+if [[ "$OS" == 'Darwin' ]]; then
+    mkdir -p ~/.bin
+    export PATH="~/.bin:$PATH"
+    
+    # Use the gnu utilities instead of the OSX defaults 
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    
+    # Python Override Configuration
+    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+    # Manpath Configuration
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    export MANPATH="/usr/local/man:$MANPATH"
+
+    # Java Configuration
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
+

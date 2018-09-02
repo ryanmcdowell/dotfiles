@@ -1,0 +1,31 @@
+[user]
+	name = Ryan McDowell
+	email = me@ryanmcdowell.io
+[core]
+    editor = vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,lf-at-eol
+	excludesfile = /Users/ryan/.gitignore_global
+[color]
+    ui = true
+[push]
+    default = simple
+[status]
+    showUntrackedFiles = normal
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[alias]
+	co = checkout
+	cob = checkout -b
+	cp = cherry-pick
+	p = pull
+	squash = merge --squash
+	st = status
+	df = diff
+	b = branch
+	r = reset
+	last = !git --no-pager log -1 HEAD
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	cleanup = !git reset --hard && git clean -f
+

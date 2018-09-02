@@ -1,0 +1,37 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Advanced CSV",
+		"AngularJS",
+		"Bootstrap 3 Snippets",
+		"Bootstrap 4 Snippets",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"Console Wrap for js",
+		"CSScomb",
+		"DocBlockr",
+		"Git",
+		"GitGutter",
+		"HTML5",
+		"Indent XML",
+		"JSON Reindent",
+		"Local History",
+		"MarkdownEditing",
+		"Package Control",
+		"Project Manager",
+		"SideBarEnhancements",
+		"Status Bar File Size",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-javac",
+		"SublimeLinter-jshint",
+		"SublimeLinter-json",
+		"Terminal",
+		"Theme - SoDaReloaded",
+		"xml2json"
+	]
+}

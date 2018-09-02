@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Clear existing screen's contents.
+clear
+
+# Output a spacer line.
+echo
+
+# Display archey
+archey --color --offline

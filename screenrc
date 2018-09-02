@@ -1,0 +1,13 @@
+# Puts tab bar at the bottom of the screen
+hardstatus off
+hardstatus alwayslastline "%{= w}%-w%{= Bk} %n %t %{-}%+w %45=%H @ %l %-= %= %D,%c:%s"
+
+# Set the caption bar to blue with no text
+caption splitonly
+caption always "%{.B.} "
+
+
+# Intialize Windows
+screen -t IRC 		0 irssi
+screen -t CPU/MEM 	1 sudo htop
+screen -t CODE 		2
