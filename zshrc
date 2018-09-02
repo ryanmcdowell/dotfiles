@@ -31,7 +31,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 # Use Ctrl-Space for auto-suggestions
 bindkey '^ ' autosuggest-accept
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 # Theme customization
 DEFAULT_USER=$USER
