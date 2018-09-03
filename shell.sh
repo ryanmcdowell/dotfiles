@@ -38,6 +38,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install tree
     brew install vim --with-override-system-vi
     brew install vitetris
+    brew install watch
     brew install w3m
     brew install wget
 
