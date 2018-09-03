@@ -17,6 +17,7 @@ antigen bundle extract
 antigen bundle git
 antigen bundle git-extras
 antigen bundle gitignore
+antigen bundle httpie
 antigen bundle marked2
 antigen bundle mvn
 antigen bundle node
