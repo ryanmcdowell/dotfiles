@@ -1,9 +1,6 @@
 #!/bin/sh
 
 # Set aliases common across operating systems.
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 alias cp="cp -ip"
 alias crontab="VIM_CRONTAB=true crontab"
 alias desktop="cd ~/Desktop"
