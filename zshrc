@@ -23,7 +23,6 @@ antigen bundle marked2
 antigen bundle mvn
 antigen bundle node
 antigen bundle npm
-antigen bundle osx
 antigen bundle pip
 antigen bundle sublime
 antigen bundle tig
