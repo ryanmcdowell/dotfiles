@@ -49,6 +49,9 @@ brew install boot2docker
 brew install gradle
 brew install maven
 
+# Data Format
+brew install protobuf
+
 # Misc
 brew install graphviz
 
