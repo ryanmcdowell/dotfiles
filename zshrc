@@ -25,6 +25,7 @@ antigen bundle npm
 antigen bundle osx
 antigen bundle pip
 antigen bundle sublime
+antigen bundle tig
 antigen bundle web-search
 antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
