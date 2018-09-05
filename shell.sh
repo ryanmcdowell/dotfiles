@@ -21,6 +21,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install curl
     brew install dark-mode
     brew install ettercap
+    brew install glances
     brew install htop-osx
     brew install httpie
     brew install iftop
