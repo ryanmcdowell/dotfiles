@@ -15,6 +15,7 @@ if [[ "$OS" == 'Darwin' ]]; then
 
     # System Utilities
     brew install archey
+    brew install bat
     brew install cmatrix
     brew install colordiff
     brew install ctags
