@@ -64,13 +64,6 @@ POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=""
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
 
-# User configuration
-source ~/.aliases
-source ~/.functions
-
-# Path updates
-source ~/.exports
-
 # Configure jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
@@ -92,6 +85,13 @@ fi
 
 # Tell antigen that you're done.
 antigen apply
+
+# User configuration
+source ~/.aliases
+source ~/.functions
+
+# Path updates
+source ~/.exports
 
 # Display the MOTD
 source ~/.motd
