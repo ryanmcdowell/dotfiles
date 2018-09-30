@@ -31,9 +31,7 @@ antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-se
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
-# Use Ctrl-Space for auto-suggestions
-bindkey '^ ' autosuggest-accept
-
+# Auto suggest customization
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 # Theme customization
@@ -64,8 +62,6 @@ POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=""
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
 
-# Configure jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # Retrieve the operating system information.
 OS=`uname`
@@ -86,6 +82,12 @@ fi
 # Tell antigen that you're done.
 antigen apply
 
+# Key bindings
+bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
+
+# Configure jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
 # User configuration
 source ~/.aliases
 source ~/.functions
@@ -95,5 +97,4 @@ source ~/.exports
 
 # Display the MOTD
 source ~/.motd
-
 
