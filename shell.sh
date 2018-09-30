@@ -37,6 +37,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install siege
     brew install speedtest_cli
     brew install tig
+    brew install tldr
     brew install tmux
     brew install tree
     brew install vim --with-override-system-vi
