@@ -28,6 +28,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install iftop
     brew install irssi
     brew install jq
+    brew install mdcat
     brew install mtr
     brew install ninvaders
     brew install nmap
