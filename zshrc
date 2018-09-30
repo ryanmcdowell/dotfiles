@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Profiling
+#
+# Uncomment the following command to profile the zshrc
+# startup. Then use `env ZSH_PROF= zsh -ic zprof` to review
+# the results
+# zmodload zsh/zprof
+
 # Load Antigen For Plugin Management
 source ~/.antigen.zsh
 
@@ -85,8 +92,13 @@ antigen apply
 # Key bindings
 bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
 
-# Configure jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+# Configure jenv. 
+#
+# Rehash in a background process to improve startup time.
+# Issue:
+#   https://github.com/gcuisinier/jenv/issues/148
+eval "$(jenv init - --no-rehash)"
+(jenv rehash &) 2> /dev/null
 
 # User configuration
 source ~/.aliases
