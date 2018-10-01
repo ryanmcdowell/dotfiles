@@ -9,10 +9,17 @@
 # Path updates
 source ~/.exports
 
+# Install zplug if not yet installed
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+fi
+
 # Load zplug For Plugin Management
 source ~/.zplug/init.zsh
 
 # Plugins
+# Requires psutil. pip install --user psutil
+zplug "paulmelnikow/zsh-startup-timer"
 zplug "plugins/bower", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh, lazy:true
@@ -31,8 +38,9 @@ zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/sublime", from:oh-my-zsh
 zplug "plugins/tig", from:oh-my-zsh
 zplug "plugins/web-search", from:oh-my-zsh
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 
 # Auto suggest customization
@@ -81,6 +89,12 @@ if [[ "$OS" == 'Darwin' ]]; then
 
     # Enables shell command completion for gcloud.
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# zplug check returns true if all packages are installed
+# Therefore, when it returns false, run zplug install
+if ! zplug check; then
+    zplug install
 fi
 
 # Tell zplug that you're done.
