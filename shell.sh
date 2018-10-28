@@ -65,6 +65,29 @@ if [[ "$OS" == 'Darwin' ]]; then
     # Install awesome fonts so powerline icons properly display in the shell
     brew tap caskroom/fonts
     brew cask install font-awesome-terminal-fonts
+elif [[ "$OS" == 'Linux' ]]; then
+    sudo su
+    apt-get install -y cmatrix
+    apt-get install -y glances
+    apt-get install -y htop
+    apt-get install -y httpie
+    apt-get install -y irssi
+    apt-get install -y jq
+    apt-get install -y mtr
+    apt-get install -y ninvaders
+    apt-get install -y nmap
+    apt-get install -y openssl
+    apt-get install -y siege
+    apt-get install -y speedtest-cli
+    apt-get install -y tig
+    apt-get install -y tmux
+    apt-get install -y tree
+    apt-get install -y unzip
+    apt-get install -y watch
+    apt-get install -y w3m
+
+    # Manual install: bat
+    curl -L https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb -o /tmp/bat.deb && dpkg -i /tmp/bat.deb
 fi
 
 # Install vim configuration
