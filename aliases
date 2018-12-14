@@ -43,3 +43,8 @@ if [[ "$OS" == 'Darwin' ]]; then
     alias upgrade="brew upgrade"
 fi
 
+# Source any local configuration files
+if [[ -f ~/.local/aliases ]]; then
+  source ~/.local/aliases
+fi
+
