@@ -9,39 +9,33 @@
 # Path updates
 source ~/.exports
 
-# Install zplug if not yet installed
-if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
-fi
-
-# Load zplug For Plugin Management
-source ~/.zplug/init.zsh
+# Load antigen For Plugin Management
+source ~/.antigen.zsh
 
 # Plugins
-# Requires psutil. pip install --user psutil
-zplug "paulmelnikow/zsh-startup-timer"
-zplug "plugins/bower", from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh, lazy:true
-zplug "plugins/common-aliases", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/extract", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/git-extras", from:oh-my-zsh
-zplug "plugins/gitignore", from:oh-my-zsh
-zplug "plugins/httpie", from:oh-my-zsh
-zplug "plugins/marked2", from:oh-my-zsh
-zplug "plugins/mvn", from:oh-my-zsh
-zplug "plugins/node", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/sublime", from:oh-my-zsh
-zplug "plugins/tig", from:oh-my-zsh
-zplug "plugins/web-search", from:oh-my-zsh
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions"
+antigen bundle bower
+antigen bundle colored-man-pages
+antigen bundle colorize
+antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle docker
+antigen bundle extract
+antigen bundle git
+antigen bundle git-extras
+antigen bundle gitignore
+antigen bundle httpie
+antigen bundle jenv
+antigen bundle marked2
+antigen bundle mvn
+antigen bundle node
+antigen bundle npm
+antigen bundle pip
+antigen bundle sublime
+antigen bundle tig
+antigen bundle web-search
+antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Auto suggest customization
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
@@ -72,33 +66,28 @@ POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
 POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=""
 
 # Load the theme.
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
-
+antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Retrieve the operating system information.
 OS=`uname`
 
 if [[ "$OS" == 'Darwin' ]]; then
     # OSX specific plugins
-    zplug "plugins/brew", from:oh-my-zsh, lazy:true
-    zplug "plugins/brew-cask", from:oh-my-zsh
-    zplug "plugins/osx", from:oh-my-zsh
+    antigen bundle brew
+    antigen bundle brew-cask
+    antigen bundle osx
 
     # Updates PATH for the Google Cloud SDK.
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 
     # Enables shell command completion for gcloud.
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+elif [[ "$OS" == 'Linux' ]]; then
+
 fi
 
-# zplug check returns true if all packages are installed
-# Therefore, when it returns false, run zplug install
-if ! zplug check; then
-    zplug install
-fi
-
-# Tell zplug that you're done.
-zplug load
+# Tell antigen that you're done.
+antigen apply
 
 # Key bindings
 bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
