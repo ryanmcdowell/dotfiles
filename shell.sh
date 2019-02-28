@@ -88,6 +88,14 @@ elif [[ "$OS" == 'Linux' ]]; then
 
     # Manual install: bat
     curl -L https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb -o /tmp/bat.deb && dpkg -i /tmp/bat.deb
+
+    # Manual install jenv
+    git clone https://github.com/gcuisinier/jenv.git ~/.jenv
+
+    # Manual install archey
+    git clone https://github.com/HorlogeSkynet/Archey4.git /tmp/archey4
+    chmod +x /tmp/archey4/archey
+    sudo cp /tmp/archey4/archey /usr/bin/archey
 fi
 
 # Install vim configuration
