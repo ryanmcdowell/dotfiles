@@ -48,6 +48,7 @@ brew install docker
 brew install boot2docker
 brew install gradle
 brew install maven
+brew install terraform
 
 # Data Format
 brew install protobuf
