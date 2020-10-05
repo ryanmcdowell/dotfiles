@@ -54,6 +54,7 @@ brew install terraform
 brew install protobuf
 
 # Misc
+brew install gh
 brew install graphviz
 
 # Install applications via brew cask
