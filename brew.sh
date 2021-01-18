@@ -54,6 +54,7 @@ brew install terraform
 brew install protobuf
 
 # Misc
+brew install ffmpeg
 brew install gh
 brew install graphviz
 brew install youtube-dl
