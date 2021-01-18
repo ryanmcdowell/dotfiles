@@ -5,7 +5,7 @@ sudo -v
 
 # Check if Homebrew is installed.
 which -s brew
-if [[ $? != 0 ]] 
+if [[ $? != 0 ]]
 then
     # Install Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -59,39 +59,36 @@ brew install gh
 brew install graphviz
 brew install youtube-dl
 
-# Install applications via brew cask
-brew tap caskroom/versions
-
 # Applications
-brew cask install atom
-brew cask install firefox
-brew cask install get-lyrical
-brew cask install github-desktop
-brew cask install google-chrome
-brew cask install google-cloud-sdk
-brew cask install filezilla
-brew cask install kaleidoscope
-brew cask install marked
-brew cask install mongochef
-brew cask install mplayerx
-brew cask install sourcetree
-brew cask install sublime-text
-brew cask install the-unarchiver
-brew cask install virtualbox
-brew cask install visual-studio-code
-brew cask install wireshark
+brew install --cask atom
+brew install --cask firefox
+brew install --cask get-lyrical
+brew install --cask github-desktop
+brew install --cask google-chrome
+brew install --cask google-cloud-sdk
+brew install --cask filezilla
+brew install --cask kaleidoscope
+brew install --cask marked
+brew install --cask mongochef
+brew install --cask mplayerx
+brew install --cask sourcetree
+brew install --cask sublime-text
+brew install --cask the-unarchiver
+brew install --cask virtualbox
+brew install --cask visual-studio-code
+brew install --cask wireshark
 
 # Quicklook Plugins
-brew cask install qlcolorcode
-brew cask install qlstephen
-brew cask install qlmarkdown
-brew cask install quicklook-json
-brew cask install qlprettypatch
-brew cask install quicklook-csv
-brew cask install betterzipql
-brew cask install qlimagesize
-brew cask install webpquicklook
-brew cask install suspicious-package
+brew install --cask qlcolorcode
+brew install --cask qlstephen
+brew install --cask qlmarkdown
+brew install --cask quicklook-json
+brew install --cask qlprettypatch
+brew install --cask quicklook-csv
+brew install --cask betterzipql
+brew install --cask qlimagesize
+brew install --cask webpquicklook
+brew install --cask suspicious-package
 
 
 
