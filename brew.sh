@@ -56,6 +56,7 @@ brew install protobuf
 # Misc
 brew install gh
 brew install graphviz
+brew install youtube-dl
 
 # Install applications via brew cask
 brew tap caskroom/versions
