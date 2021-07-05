@@ -39,6 +39,7 @@ OS=`uname`
 if [[ "$OS" == 'Darwin' ]]; then
     alias chrome="open -a \"Google Chrome\""
     alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias python=/usr/local/bin/python3
     alias update="brew update"
     alias upgrade="brew upgrade"
 fi
