@@ -1,97 +1,135 @@
 #!/bin/sh
 
-# Profiling
-#
-# Uncomment the following command to profile the zshrc
-# startup. Then uncomment the zprof command at the end of the file.
-# zmodload zsh/zprof
 
-# Path updates
+####################################################
+#  Path
+####################################################
 source ~/.exports
 
-# Load antigen For Plugin Management
-source ~/.antigen.zsh
 
-# Plugins
-antigen bundle bower
-antigen bundle colored-man-pages
-antigen bundle colorize
-antigen bundle command-not-found
-antigen bundle common-aliases
-antigen bundle docker
-antigen bundle extract
-antigen bundle git
-antigen bundle git-extras
-antigen bundle gitignore
-antigen bundle httpie
-antigen bundle jenv
-antigen bundle marked2
-antigen bundle mvn
-antigen bundle node
-antigen bundle npm
-antigen bundle pip
-antigen bundle sublime
-antigen bundle tig
-antigen bundle web-search
-antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
+####################################################
+#  Instant Prompt
+#  https://github.com/romkatv/powerlevel10k
+####################################################
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Auto suggest customization
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
-# Theme customization
-DEFAULT_USER=$USER
-POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs)
+####################################################
+#  Zinit Install
+#  https://github.com/zdharma/zinit
+####################################################
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# Newline before and move the cursor one character backwards
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX=" ↳  "
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Advanced `vcs` color customization
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND="black"
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND="blue"
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="black"
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="yellow"
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="black"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="red"
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND=""
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="8"
-POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="red"
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=""
+### End of Zinit's installer chunk
 
-# Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
 
+####################################################
+#  Zinit Plugins
+####################################################
+zinit light-mode for \
+    zsh-users/zsh-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-history-substring-search
+
+# Auto suggest highlight customization
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
+# Key bindings
+bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
+
+# Oh My Zsh Plugins
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
+zinit wait lucid for \
+    OMZ::plugins/bower/bower.plugin.zsh \
+    OMZ::plugins/brew/brew.plugin.zsh \
+    OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
+    OMZ::plugins/colorize/colorize.plugin.zsh \
+    OMZ::plugins/command-not-found/command-not-found.plugin.zsh \
+    OMZ::plugins/extract/extract.plugin.zsh \
+    OMZ::plugins/gcloud/gcloud.plugin.zsh \
+    OMZ::plugins/git-auto-fetch/git-auto-fetch.plugin.zsh \
+    OMZ::plugins/git/git.plugin.zsh \
+    OMZ::plugins/gitignore/gitignore.plugin.zsh \
+    OMZ::plugins/git-extras/git-extras.plugin.zsh \
+    OMZ::plugins/gitignore/gitignore.plugin.zsh \
+    OMZ::plugins/golang/golang.plugin.zsh \
+    OMZ::plugins/iterm2/iterm2.plugin.zsh \
+    OMZ::plugins/httpie/httpie.plugin.zsh \
+    OMZ::plugins/jenv/jenv.plugin.zsh \
+    OMZ::plugins/mvn/mvn.plugin.zsh \
+    OMZ::plugins/node/node.plugin.zsh \
+    OMZ::plugins/npm/npm.plugin.zsh \
+    OMZ::plugins/pip/pip.plugin.zsh \
+    OMZ::plugins/terraform/terraform.plugin.zsh \
+    OMZ::plugins/tig/tig.plugin.zsh \
+    OMZ::plugins/web-search/web-search.plugin.zsh
+
+
+####################################################
+#  OS Configuration
+####################################################
+# Install the following plugins depending on which OS is zsh is running on.
 # Retrieve the operating system information.
 OS=`uname`
 
 if [[ "$OS" == 'Darwin' ]]; then
     # OSX specific plugins
-    antigen bundle brew
-    antigen bundle brew-cask
-    antigen bundle osx
+    zinit wait lucid for \
+        OMZ::plugins/brew/brew.plugin.zsh
 
     # Updates PATH for the Google Cloud SDK.
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 
     # Enables shell command completion for gcloud.
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-elif [[ "$OS" == 'Linux' ]]; then
-
 fi
 
-# Tell antigen that you're done.
-antigen apply
 
-# Key bindings
-bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
+####################################################
+#  Theme
+####################################################
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+####################################################
+#  User Configuration
+####################################################
+source ~/.aliases
+source ~/.functions
+
+
+####################################################
+#  App Configuration
+####################################################
 # Configure jenv.
 #
 # Rehash in a background process to improve startup time.
@@ -100,12 +138,10 @@ bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
 eval "$(jenv init - --no-rehash)"
 (jenv rehash &) 2> /dev/null
 
-# User configuration
-source ~/.aliases
-source ~/.functions
 
-# Display the MOTD
+####################################################
+#  MOTD
+####################################################
 source ~/.motd
 
-# Uncomment when profiling
-# zprof
+
