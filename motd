@@ -15,4 +15,8 @@ clear
 echo
 
 # Display archey
-archey --color --offline
+if [[ "$OS" == 'Darwin' ]]; then
+  archey --color --offline
+elif [[ "$OS" == 'Linux' ]]; then
+  archey
+fi
