@@ -122,25 +122,30 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install --cask homebrew/cask-fonts/font-awesome-terminal-fonts
 
 elif [[ "$OS" == 'Linux' ]]; then
-    sudo su
-    apt-get install -y cmatrix
-    apt-get install -y glances
-    apt-get install -y htop
-    apt-get install -y httpie
-    apt-get install -y irssi
-    apt-get install -y jq
-    apt-get install -y mtr
-    apt-get install -y ninvaders
-    apt-get install -y nmap
-    apt-get install -y openssl
-    apt-get install -y siege
-    apt-get install -y speedtest-cli
-    apt-get install -y tig
-    apt-get install -y tmux
-    apt-get install -y tree
-    apt-get install -y unzip
-    apt-get install -y watch
-    apt-get install -y w3m
+    # Change the shell to zsh
+    sudo apt-get install zsh
+    chsh -s $(which zsh)
+
+    # Install packages
+    sudo apt-get install -y cmatrix \
+        glances \
+        htop \
+        httpie \
+        irssi \
+        jq \
+        mtr \
+        ninvaders \
+        nmap \
+        openssl \
+        siege \
+        speedtest-cli \
+        tig \
+        tmux \
+        tree \
+        unzip \
+        watch \
+        w3m \
+        youtube-dl
 
     # Manual install: archey
     git clone https://github.com/HorlogeSkynet/Archey4.git /tmp/archey4
@@ -148,9 +153,10 @@ elif [[ "$OS" == 'Linux' ]]; then
     sudo cp /tmp/archey4/archey /usr/bin/archey
 
     # Manual install: bat
-    curl -L https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb -o /tmp/bat.deb && dpkg -i /tmp/bat.deb
+    curl -L https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb -o /tmp/bat.deb && sudo dpkg -i /tmp/bat.deb
 
     # Manual install: jenv
+    rm -rf ~/.jenv
     git clone https://github.com/gcuisinier/jenv.git ~/.jenv
 
     # Manual install: ticker
