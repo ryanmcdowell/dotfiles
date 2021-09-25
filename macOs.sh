@@ -56,11 +56,6 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
-# Set a custom wallpaper image to the default in the init. Note this will only
-# change the wallpaper if the terminal is not running in a fullscreen mode.
-DEFAULT_DESKTOP="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/init/system/DefaultDesktop.jpg
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${DEFAULT_DESKTOP}"'
-
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -284,15 +279,6 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom right screen corner → Start screen saver
 defaults write com.apple.dock wvous-br-corner -int 5
 defaults write com.apple.dock wvous-br-modifier -int 0
-
-
-
-###############################################################################
-# Mail                                                                        #
-###############################################################################
-
-# Disable inline attachments (just show the icons)
-defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 
 

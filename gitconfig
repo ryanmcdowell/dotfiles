@@ -1,20 +1,25 @@
 [user]
 	name = Ryan McDowell
 	email = me@ryanmcdowell.io
+
 [core]
     editor = vim
     whitespace = fix,-indent-with-non-tab,trailing-space,lf-at-eol
-	excludesfile = /Users/ryan/.gitignore_global
+
 [color]
     ui = true
+
 [push]
     default = simple
+
 [status]
     showUntrackedFiles = normal
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [alias]
 	co = checkout
 	cob = checkout -b

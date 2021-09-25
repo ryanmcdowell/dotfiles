@@ -1,5 +1,13 @@
 #!/bin/sh
 
+########################################################################
+#  Vim Configuration
+#
+#  This file configures vim with default settings and installs
+#  plugins via Vundle.
+#
+########################################################################
+
 # Change the directory to the dotfiles repository
 cd "$(dirname "${BASH_SOURCE}")";
 

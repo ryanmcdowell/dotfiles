@@ -1,5 +1,12 @@
 #!/bin/sh
 
+########################################################################
+#  Aliases
+#
+#  Sets shortcut aliases for common commands / actions.
+#
+########################################################################
+
 # Set aliases common across operating systems.
 alias ..="cd .."
 alias ...="cd ../.."
@@ -7,7 +14,6 @@ alias ....="cd ../../.."
 alias cat="bat --paging=never"
 alias cp="cp -ip"
 alias crontab="VIM_CRONTAB=true crontab"
-alias desktop="cd ~/Desktop"
 alias df="df -h --total"
 alias extip="curl -sS eth0.me"
 alias fgrep="fgrep --color=auto"
@@ -23,7 +29,6 @@ alias mv="mv -i"
 alias path='echo -e ${PATH//:/\\n}'
 alias ping='ping -c 5'
 alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P"
-alias projects="cd ~/Developer/Projects"
 alias reload="source ~/.zshrc"
 alias rsync="rsync -avrz --progress --exclude=.DS_Store"
 alias space="df -h --total"
@@ -37,7 +42,9 @@ OS=`uname`
 # Set OSX specific aliases.
 if [[ "$OS" == 'Darwin' ]]; then
     alias chrome="open -a \"Google Chrome\""
+    alias desktop="cd ~/Desktop"
     alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias projects="cd ~/Developer/Projects"
     alias python=/usr/local/bin/python3
     alias update="brew update"
     alias upgrade="brew upgrade"

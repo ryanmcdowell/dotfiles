@@ -1,5 +1,13 @@
 #!/bin/sh
 
+########################################################################
+#  Motd
+#
+#  Displays the message of the day at the start of each terminal
+#  session.
+#
+########################################################################
+
 # Clear existing screen's contents.
 clear
 

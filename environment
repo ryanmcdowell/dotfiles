@@ -1,5 +1,13 @@
 #!/bin/sh
 
+########################################################################
+#  Path Configuration
+#  https://github.com/ryanmcdowell/dotfiles
+#
+#  Configures and updates the path.
+#
+########################################################################
+
 # Path configuration
 export PATH="./"
 export PATH="/bin:$PATH"
@@ -32,6 +40,13 @@ if [[ "$OS" == 'Darwin' ]]; then
 
     # Java Configuration
     export JAVA_HOME=$(/usr/libexec/java_home)
+
+    # Updates PATH for the Google Cloud SDK.
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+
+    # Enables shell command completion for gcloud.
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
 elif [[ "$OS" == 'Linux' ]]; then
     export PATH="$HOME/.jenv/bin:$PATH"
 fi

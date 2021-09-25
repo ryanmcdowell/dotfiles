@@ -1,0 +1,61 @@
+####################################################
+#  Ticker Configuration
+#
+#  ticker is a CLI utility to check live stock
+#  quotes
+#
+#  https://github.com/achannarasappa/ticker
+####################################################
+show-summary: true
+show-tags: true
+show-fundamentals: true
+show-separator: true
+show-holdings: true
+interval: 5
+currency: USD
+currency-summary-only: false
+watchlist:
+  - AAPL
+  - AMZN
+  - ATVI
+  - BA
+  - CRM
+  - DASH
+  - DIS
+  - EA
+  - FB
+  - GOOG
+  - KO
+  - MGK
+  - MSFT
+  - MTUM
+  - NEGG
+  - NFLX
+  - NIO
+  - NVDA
+  - PINS
+  - PYPL
+  - QCOM
+  - QQQ
+  - SCHD
+  - SHOP
+  - SNOW
+  - SONO
+  - SPCE
+  - SPOT
+  - SQ
+  - TEAM
+  - TQQQ
+  - TSLA
+  - TWTR
+  - UAL
+  - UBER
+  - V
+  - VGT
+  - VNQ
+  - VOO
+  - VT
+  - VTI
+  - VXUS
+  - VZ
+  - ZNGA

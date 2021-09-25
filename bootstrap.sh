@@ -13,19 +13,20 @@ git pull origin master
 # Retrieve the operating system information
 OS=`uname`
 
+# Install the shell
+printf "\n\nInstalling Shell...\n"
+source shell.sh
+
 # OSX specific configurations
 if [[ "$OS" == 'Darwin' ]]; then
     # Install homebrew and packages
-    printf "\n\nInstalling Homebrew packages...\n"
-    source brew.sh
+    printf "\n\nInstalling Applications...\n"
+    source app.sh
 fi
 
 # Install npm packages
 printf "\n\nInstalling npm packages...\n"
 source npm.sh
-
-# Install the shell
-source shell.sh
 
 # Add a job to synch settings to the repo every night. Only add
 # the job if it does not already exist so the script is rerunnable.

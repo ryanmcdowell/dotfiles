@@ -64,27 +64,28 @@ call vundle#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set ai                      " Sets auto indenting
-set history=1000            " Set how many lines of history VIM has to remember
-set ruler                   " Show the cursor position in statusline
-set hlsearch                " Hightlight the last searched term
 set autoindent              " Always set autoindent on
-set copyindent              " Copy the previous line indent on autoindent
-set smartindent             " Smart indenting
-set incsearch               " Search for text as you enter it
-set ignorecase              " Search will ignore cases in search patterns
-set smartcase               " Use upper-case characters in search pattern to case-sensitive search
-set tabstop=4               " Set tabs at * chars
-set shiftwidth=4            " Set indents at * chars
-set number                  " Show line numbers
-set noswapfile              " Don't create a swap file
-set equalalways             " Make splits always equal
-set cursorline!             " Visible cursorline
-set previewheight=10        " Set constant preview height
-set hidden                  " Allows unsaved buffers to go into the bg
-set showmode                " Show the current mode
-set scrolloff=999           " Don't allow the cursor to go below the middle of the page
-set expandtab               " Insert space characters whenever the tab key is pressed
 set cindent                 " Auto indent braces
+set copyindent              " Copy the previous line indent on autoindent
+set cursorline!             " Visible cursorline
+set equalalways             " Make splits always equal
+set expandtab               " Insert space characters whenever the tab key is pressed
+set hidden                  " Allows unsaved buffers to go into the bg
+set history=1000            " Set how many lines of history VIM has to remember
+set hlsearch                " Hightlight the last searched term
+set ignorecase              " Search will ignore cases in search patterns
+set incsearch               " Search for text as you enter it
+set noswapfile              " Don't create a swap file
+set number                  " Show line numbers
+set previewheight=10        " Set constant preview height
+set ruler                   " Show the cursor position in statusline
+set scrolloff=999           " Don't allow the cursor to go below the middle of the page
+set shell=zsh               " Use zsh as the default shell :sh"
+set shiftwidth=4            " Set indents at * chars
+set showmode                " Show the current mode
+set smartcase               " Use upper-case characters in search pattern to case-sensitive search
+set smartindent             " Smart indenting
+set tabstop=4               " Set tabs at * chars
 syntax on                   " Enables syntax highlighting
 filetype on                 " Turn filetype detection back on
 filetype plugin indent on   " Use the filetype plugins
@@ -110,9 +111,6 @@ if !exists('init')
     colorscheme molokai
     let g:molokai_original = 1
 endif
-
-" Set the shell rc file
-set shell=/bin/bash\ --rcfile\ ~/.vim/.bashvimrc
 
 " Set a paste toggle
 set pt=<F8>
