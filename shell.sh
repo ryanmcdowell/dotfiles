@@ -140,6 +140,9 @@ if [[ "$OS" == 'Darwin' ]]; then
     # Install awesome fonts so powerline icons properly display in the shell
     brew install --cask homebrew/cask-fonts/font-awesome-terminal-fonts
 
+    # Install iTerm2 terminal utilities
+    curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
+
 elif [[ "$OS" == 'Linux' ]]; then
     # Change the shell to zsh
     sudo apt-get install zsh

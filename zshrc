@@ -97,6 +97,7 @@ plugins=(
   golang
   httpie
   jenv
+  macos
   mvn
   node
   npm
@@ -104,6 +105,7 @@ plugins=(
   terraform
   tig
   web-search
+  z
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
@@ -144,9 +146,13 @@ source ~/.functions
 eval "$(jenv init - --no-rehash)"
 (jenv rehash &) 2> /dev/null
 
+# Configure iTerm
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 ####################################################
 #  MOTD
 ####################################################
 source ~/.motd
+
+
 
