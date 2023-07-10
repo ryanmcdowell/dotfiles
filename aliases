@@ -21,7 +21,7 @@ alias gitroot='cd ./$(git rev-parse --show-cdup) && ll'
 alias grep="grep --color=auto"
 alias htop="sudo htop"
 alias iftop="sudo iftop -B"
-alias ls="ls -N --color=auto"
+alias ls="ls --color=auto"
 alias ll="ls -lh --color=auto"
 alias la="ls -lah --color=auto"
 alias mkdir="mkdir -pv"
@@ -43,9 +43,9 @@ OS=`uname`
 if [[ "$OS" == 'Darwin' ]]; then
     alias chrome="open -a \"Google Chrome\""
     alias desktop="cd ~/Desktop"
-    alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias lock="pmset displaysleepnow"
     alias projects="cd ~/Developer/Projects"
-    alias python=/usr/local/bin/python3
+    alias python="/opt/homebrew/bin/python3"
     alias update="brew update"
     alias upgrade="brew upgrade"
 fi

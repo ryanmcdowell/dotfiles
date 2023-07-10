@@ -45,7 +45,6 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Rip-Rip/clang_complete'
-Plugin 'basepi/vim-conque'
 Plugin 'lilydjwg/colorizer'
 Plugin 'terryma/vim-multiple-cursors'
 

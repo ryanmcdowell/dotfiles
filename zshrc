@@ -21,14 +21,11 @@
 #  https://github.com/ryanmcdowell/dotfiles/blob/master/shell.sh
 #
 #
-#  Plugins
+#  OhMyZsh
 #  -------
-#  This configuration will automatically install zinit to manage
-#  shell plugins. Zinit was chosen as the plugin manager due to
-#  speed and community activity as of 2021-07-01.
-#
-#  More info:
-#  https://github.com/zdharma/zinit
+#  This configuration leverages OhMyZsh to manage package and zsh 
+#  configuration.
+#  https://github.com/ohmyzsh/ohmyzsh
 #
 ########################################################################
 
@@ -58,83 +55,67 @@ setopt share_history         # Share history between different instances of the 
 
 
 ####################################################
-#  Instant Prompt
-#  https://github.com/romkatv/powerlevel10k
+#  OhMyZsh Configuration
+#  https://github.com/ohmyzsh/ohmyzsh
 ####################################################
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-####################################################
-#  Zinit Install
-#  https://github.com/zdharma/zinit
-####################################################
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-### End of Zinit's installer chunk
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  bazel
+  brew
+  colored-man-pages
+  colorize
+  command-not-found
+  extract
+  gcloud
+  git
+  git-auto-fetch
+  git-extras
+  gitignore
+  golang
+  httpie
+  jenv
+  mvn
+  node
+  npm
+  pip
+  terraform
+  tig
+  web-search
+  zsh-autosuggestions
+  zsh-history-substring-search
+  zsh-syntax-highlighting
+)
 
-
-####################################################
-#  Zinit Plugins
-####################################################
-zinit light-mode for \
-    zsh-users/zsh-syntax-highlighting \
-    zsh-users/zsh-autosuggestions \
-    zsh-users/zsh-history-substring-search
+source $ZSH/oh-my-zsh.sh
 
 # Auto-suggest highlight customization
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 # Auto-suggest key binding
 bindkey '^ ' autosuggest-accept # Use Ctrl-space for autosuggestions
-
-# Oh My Zsh Plugins
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
-zinit wait lucid for \
-    OMZ::plugins/bower/bower.plugin.zsh \
-    OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
-    OMZ::plugins/colorize/colorize.plugin.zsh \
-    OMZ::plugins/command-not-found/command-not-found.plugin.zsh \
-    OMZ::plugins/extract/extract.plugin.zsh \
-    OMZ::plugins/gcloud/gcloud.plugin.zsh \
-    OMZ::plugins/git-auto-fetch/git-auto-fetch.plugin.zsh \
-    OMZ::plugins/git/git.plugin.zsh \
-    OMZ::plugins/gitignore/gitignore.plugin.zsh \
-    OMZ::plugins/git-extras/git-extras.plugin.zsh \
-    OMZ::plugins/gitignore/gitignore.plugin.zsh \
-    OMZ::plugins/golang/golang.plugin.zsh \
-    OMZ::plugins/httpie/httpie.plugin.zsh \
-    OMZ::plugins/jenv/jenv.plugin.zsh \
-    OMZ::plugins/mvn/mvn.plugin.zsh \
-    OMZ::plugins/node/node.plugin.zsh \
-    OMZ::plugins/npm/npm.plugin.zsh \
-    OMZ::plugins/pip/pip.plugin.zsh \
-    OMZ::plugins/terraform/terraform.plugin.zsh \
-    OMZ::plugins/tig/tig.plugin.zsh \
-    OMZ::plugins/web-search/web-search.plugin.zsh
 
 
 ####################################################
@@ -143,26 +124,6 @@ zinit wait lucid for \
 # Install the following plugins depending on which OS is zsh is running on.
 # Retrieve the operating system information.
 OS=`uname`
-
-if [[ "$OS" == 'Darwin' ]]; then
-    # OSX specific plugins
-    zinit wait lucid for \
-        OMZ::plugins/brew/brew.plugin.zsh \
-        OMZ::plugins/iterm2/iterm2.plugin.zsh
-
-fi
-
-
-####################################################
-#  Theme
-#  https://github.com/romkatv/powerlevel10k
-####################################################
-# Load powerlevel10k theme
-zinit ice depth"1" # git clone depth
-zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 ####################################################
@@ -188,5 +149,4 @@ eval "$(jenv init - --no-rehash)"
 #  MOTD
 ####################################################
 source ~/.motd
-
 

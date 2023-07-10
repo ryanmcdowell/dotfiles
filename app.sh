@@ -8,17 +8,17 @@ which -s brew
 if [[ $? != 0 ]]
 then
     # Install Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+    # Put brew on the path so the rest of the commands can execute successfully
+    export PATH=/opt/homebrew/bin:$PATH
 else
     # Update Brew & all packages to latest version
     brew update
 fi
 
-# Tap Casks of drivers
-brew tap homebrew/cask-drivers
-
 # Applications
-brew install --cask google-chrome
+#brew install --cask google-chrome
 brew install --cask intellij-idea-ce
 brew install --cask mplayerx
 brew install --cask sonos

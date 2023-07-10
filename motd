@@ -11,12 +11,11 @@
 # Clear existing screen's contents.
 clear
 
-# Output a spacer line.
-echo
+# Output a spacer
+printf "\n\n"
 
 # Display archey
-if [[ "$OS" == 'Darwin' ]]; then
-  archey --color --offline
-elif [[ "$OS" == 'Linux' ]]; then
-  archey
-fi
+archey
+
+# Output a spacer
+printf "\n\n"

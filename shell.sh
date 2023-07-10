@@ -13,6 +13,12 @@ sudo -v
 # Retrieve the operating system information.
 OS=`uname`
 
+# Change the directory to the dotfiles repository
+cd "$(dirname "${BASH_SOURCE}")";
+
+# Set the repo directory variable
+REPO_DIR=`pwd`
+
 # Set OSX shell utilities
 if [[ "$OS" == 'Darwin' ]]; then
 
@@ -21,7 +27,10 @@ if [[ "$OS" == 'Darwin' ]]; then
     if [[ $? != 0 ]]
     then
         # Install Homebrew
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+        # Put brew on the path so the rest of the commands can execute successfully
+        export PATH=/opt/homebrew/bin:$PATH
     else
         # Update Brew & all packages to latest version
         brew update
@@ -32,19 +41,20 @@ if [[ "$OS" == 'Darwin' ]]; then
 
     # Install zsh and reconfigure the shell
     brew install zsh
-    sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+    sudo dscl . -create /Users/$USER UserShell /opt/homebrew/bin/zsh
 
     ############################################
     # System Utilities
     ############################################
-    brew install archey
+    brew install archey4
+    
+
     brew install bat
     brew install cmatrix
     brew install colordiff
     brew install ctags
     brew install curl
     brew install dark-mode
-    brew install ettercap
     brew install ffmpeg
     brew install gh
     brew install glances
@@ -67,7 +77,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install tldr
     brew install tmux
     brew install tree
-    brew install vim --with-override-system-vi
+    brew install vim
     brew install vitetris
     brew install watch
     brew install w3m
@@ -75,7 +85,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install youtube-dl
 
     # Install duplicate system utilities (GNU) to replace OSX's
-    brew install grep --with-default-names
+    brew install grep
     brew install gzip
     brew install lsof
     brew install rsync
@@ -90,6 +100,9 @@ if [[ "$OS" == 'Darwin' ]]; then
 
     # Languages
     brew install java                           # Java SDK
+    sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk \
+     /Library/Java/JavaVirtualMachines/openjdk.jdk
+
     brew install jenv                           # Virtual env for java
     brew install go                             # Go SDK
     brew install groovy                         # Groovy SDK
@@ -116,7 +129,13 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install --cask iterm2
 
     # Download the iTerm color schemes
-    git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git ~/Desktop/iterm-color-schemes
+    git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git
+
+    # Import all color schemes
+    sh iTerm2-Color-Schemes/tools/import-scheme.sh schemes/*
+
+    # Clean-up directory
+    rm -rf iTerm2-Color-Schemes
 
     # Install awesome fonts so powerline icons properly display in the shell
     brew install --cask homebrew/cask-fonts/font-awesome-terminal-fonts
@@ -169,17 +188,37 @@ elif [[ "$OS" == 'Linux' ]]; then
 
 fi
 
+############################################
+# OhMyZsh
+############################################
+# Install OhMyZsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# Install zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Install zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+
+# Install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+############################################
+# Vim
+############################################
 # Install vim configuration
 printf "\n\nInstalling vim config...\n"
 source vim.sh
 
-# Link the config files
-# Change the directory to the dotfiles repository
-cd "$(dirname "${BASH_SOURCE}")";
 
-# Set the repo directory variable
-REPO_DIR=`pwd`
-
+############################################
+# Link
+############################################
+# Link dot files
 printf "Linking dotfiles... \n"
 ln -sf ${REPO_DIR}/aliases ~/.aliases
 ln -sf ${REPO_DIR}/environment ~/.environment
@@ -189,6 +228,12 @@ ln -sf ${REPO_DIR}/motd ~/.motd
 ln -sf ${REPO_DIR}/screenrc ~/.screenrc
 ln -sf ${REPO_DIR}/vimrc ~/.vimrc
 ln -sf ${REPO_DIR}/zshrc ~/.zshrc
+
+# Link config files
+ln -sf ${REPO_DIR}/p10k.zsh ~/.p10k.zsh
+
+mkdir -p ~/.config/archey4
+ln -sf ${REPO_DIR}/config/archey4/config.json ~/.config/archey4/config.json
 
 # Reload the terminal
 source ~/.zshrc
