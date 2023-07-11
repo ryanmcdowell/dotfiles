@@ -137,8 +137,67 @@ if [[ "$OS" == 'Darwin' ]]; then
     # Clean-up directory
     rm -rf iTerm2-Color-Schemes
 
-    # Install awesome fonts so powerline icons properly display in the shell
-    brew install --cask homebrew/cask-fonts/font-awesome-terminal-fonts
+    # Install nerd fonts so powerline icons properly display in the shell
+    brew tap homebrew/cask-fonts
+    brew install font-3270-nerd-font
+    brew install font-agave-nerd-font
+    brew install font-anonymice-nerd-font
+    brew install font-arimo-nerd-font
+    brew install font-aurulent-nerd-font
+    brew install font-aurulent-sans-mono-nerd-font
+    brew install font-awesome-terminal-fonts
+    brew install font-bigblue-terminal-nerd-font
+    brew install font-bitstream-vera-sans-mono-nerd-font
+    brew install font-blex-mono-nerd-font
+    brew install font-caskaydia-cove-nerd-font
+    brew install font-code-new-roman-nerd-font
+    brew install font-comic-shanns-mono-nerd-font
+    brew install font-cousine-nerd-font
+    brew install font-daddy-time-mono-nerd-font
+    brew install font-dejavu-sans-mono-nerd-font
+    brew install font-droid-sans-mono-nerd-font
+    brew install font-fantasque-sans-mono-nerd-font
+    brew install font-fira-code-nerd-font
+    brew install font-fira-mono-nerd-font
+    brew install font-firgenerd
+    brew install font-go-mono-nerd-font
+    brew install font-gohufont-nerd-font
+    brew install font-hack-nerd-font
+    brew install font-hackgen-nerd
+    brew install font-hasklug-nerd-font
+    brew install font-heavy-data-nerd-font
+    brew install font-hurmit-nerd-font
+    brew install font-im-writing-nerd-font
+    brew install font-inconsolata-go-nerd-font
+    brew install font-inconsolata-lgc-nerd-font
+    brew install font-inconsolata-nerd-font
+    brew install font-iosevka-nerd-font
+    brew install font-iosevka-term-nerd-font
+    brew install font-jetbrains-mono-nerd-font
+    brew install font-lekton-nerd-font
+    brew install font-liberation-nerd-font
+    brew install font-lilex-nerd-font
+    brew install font-meslo-lg-nerd-font
+    brew install font-monocraft-nerd-font
+    brew install font-monofur-nerd-font
+    brew install font-monoid-nerd-font
+    brew install font-mononoki-nerd-font
+    brew install font-mplus-nerd-font
+    brew install font-noto-nerd-font
+    brew install font-open-dyslexic-nerd-font
+    brew install font-overpass-nerd-font
+    brew install font-profont-nerd-font
+    brew install font-proggy-clean-tt-nerd-font
+    brew install font-roboto-mono-nerd-font
+    brew install font-sauce-code-pro-nerd-font
+    brew install font-shure-tech-mono-nerd-font
+    brew install font-space-mono-nerd-font
+    brew install font-symbols-only-nerd-font
+    brew install font-terminess-ttf-nerd-font
+    brew install font-tinos-nerd-font
+    brew install font-ubuntu-mono-nerd-font
+    brew install font-ubuntu-nerd-font
+    brew install font-victor-mono-nerd-font
 
     # Install iTerm2 terminal utilities
     curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
