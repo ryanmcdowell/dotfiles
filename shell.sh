@@ -278,6 +278,22 @@ source vim.sh
 
 
 ############################################
+# GitHub
+############################################
+# 1. Generate the key (if it doesn't exist)
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+    ssh-keygen -t ed25519 -C "me@ryanmcdowell.io" -N "" -f ~/.ssh/id_ed25519
+fi
+
+# 2. Start the agent and add the key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# 3. Use GH CLI to add the public key to your account
+gh auth login
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(hostname)-$(date +'%Y-%m-%d')"
+
+############################################
 # Link
 ############################################
 # Link dot files
