@@ -17,27 +17,18 @@ else
     brew update
 fi
 
+# Install rosetta for applications unsupported on Apple Silicon
+softwareupdate --install-rosetta
+
 # Applications
 #brew install --cask google-chrome
-brew install --cask intellij-idea-ce
-brew install --cask mplayerx
+brew install --cask intellij-idea
 brew install --cask sonos
 brew install --cask spotify
 brew install --cask sublime-text
 brew install --cask the-unarchiver
 brew install --cask thinkorswim
 brew install --cask visual-studio-code
-
-# Quicklook Plugins
-brew install --cask qlmarkdown
-brew install --cask quicklook-json
-brew install --cask qlprettypatch
-brew install --cask quicklook-csv
-brew install --cask qlimagesize
-brew install --cask webpquicklook
-brew install --cask suspicious-package
-
-
 
 
 

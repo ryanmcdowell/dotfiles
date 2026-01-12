@@ -19,7 +19,7 @@ source shell.sh
 
 # OSX specific configurations
 if [[ "$OS" == 'Darwin' ]]; then
-    # Install homebrew and packages
+    # Install applications
     printf "\n\nInstalling Applications...\n"
     source app.sh
 fi
