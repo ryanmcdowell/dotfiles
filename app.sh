@@ -22,6 +22,7 @@ softwareupdate --install-rosetta
 
 # Applications
 #brew install --cask google-chrome
+brew install --cask iina
 brew install --cask intellij-idea
 brew install --cask sonos
 brew install --cask spotify
