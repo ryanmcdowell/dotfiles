@@ -45,6 +45,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     alias desktop="cd ~/Desktop"
     alias lock="pmset displaysleepnow"
     alias projects="cd ~/Developer/Projects"
+    alias dotfiles="~/Developer/Projects/dotfiles"
     alias python="/opt/homebrew/bin/python3"
     alias update="brew update"
     alias upgrade="brew upgrade"
