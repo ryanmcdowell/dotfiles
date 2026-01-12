@@ -30,6 +30,10 @@ brew install --cask the-unarchiver
 brew install --cask thinkorswim
 brew install --cask visual-studio-code
 
-
+# Install home office utilities
+brew install --cask elgato-control-center
+brew install --cask elgato-camera-hub
+brew install --cask elgato-stream-deck
+brew install --cask elgato-wave-link
 
 
