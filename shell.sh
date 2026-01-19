@@ -56,6 +56,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install curl
     brew install dark-mode
     brew install ffmpeg
+    brew install gemini-cli
     brew install gh
     brew install glances
     brew install graphviz
