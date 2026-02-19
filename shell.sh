@@ -99,6 +99,10 @@ if [[ "$OS" == 'Darwin' ]]; then
     # Install Google Cloud SDK
     brew install --cask google-cloud-sdk
 
+    # Install Databricks
+    brew tap databricks/tap
+    brew install databricks
+
     # Languages
     brew install java                           # Java SDK
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk \

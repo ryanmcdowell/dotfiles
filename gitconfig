@@ -5,6 +5,7 @@
 [core]
     editor = vim
     whitespace = fix,-indent-with-non-tab,trailing-space,lf-at-eol
+	hooksPath = /Users/ryan.mcdowell/.databricks/githooks
 
 [color]
     ui = true

@@ -149,6 +149,9 @@ eval "$(jenv init - --no-rehash)"
 # Configure iTerm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Add homebrew completions
+fpath+=$(brew --prefix)/share/zsh/site-functions
+
 ####################################################
 #  MOTD
 ####################################################
