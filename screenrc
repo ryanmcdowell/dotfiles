@@ -9,5 +9,5 @@ caption always "%{.B.} "
 
 # Intialize Windows
 screen -t IRC 		0 irssi
-screen -t CPU/MEM 	1 sudo htop
+screen -t CPU/MEM 	1 glances
 screen -t CODE 		2
