@@ -37,5 +37,6 @@ brew install --cask elgato-control-center
 brew install --cask elgato-camera-hub
 brew install --cask elgato-stream-deck
 brew install --cask elgato-wave-link
+brew install --cask logi-options+
 
 

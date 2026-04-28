@@ -47,8 +47,6 @@ if [[ "$OS" == 'Darwin' ]]; then
     # System Utilities
     ############################################
     brew install archey4
-    
-
     brew install bat
     brew install cmatrix
     brew install colordiff
@@ -113,6 +111,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install groovy                         # Groovy SDK
     brew install node                           # Node SDK
     brew install python && easy_install pip     # Python SDK
+    brew install uv                             # Python Package manager
     brew install ruby                           # Ruby SDK
     brew install scala                          # Scala SDK
 
