@@ -136,7 +136,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     git clone git@github.com:mbadolato/iTerm2-Color-Schemes.git
 
     # Import all color schemes
-    sh iTerm2-Color-Schemes/tools/import-scheme.sh schemes/*
+    sh iTerm2-Color-Schemes/tools/import-scheme.sh iTerm2-Color-Schemes/schemes/*
 
     # Clean-up directory
     rm -rf iTerm2-Color-Schemes
