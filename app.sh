@@ -23,9 +23,11 @@ softwareupdate --install-rosetta
 # Applications
 brew install --cask google-chrome
 brew install --cask antigravity
+brew install --cask canon-eos-utility
 brew install --cask iina
 brew install --cask intellij-idea
 brew install --cask sonos
+brew install --cask sony-ps-remote-play
 brew install --cask spotify
 brew install --cask sublime-text
 brew install --cask the-unarchiver

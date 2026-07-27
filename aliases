@@ -49,6 +49,7 @@ if [[ "$OS" == 'Darwin' ]]; then
     alias python="/opt/homebrew/bin/python3"
     alias update="brew update"
     alias upgrade="brew upgrade"
+    alias skynet="ssh -p 2222 ryan@10.0.1.2"
 fi
 
 # Source any local configuration files

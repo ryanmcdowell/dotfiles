@@ -159,3 +159,9 @@ source ~/.motd
 
 
 
+
+# Rust toolchain (rustup)
+. "$HOME/.cargo/env"
+
+# Added by Antigravity
+export PATH="/Users/ryanmcdowell/.antigravity/antigravity/bin:$PATH"
