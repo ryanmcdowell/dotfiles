@@ -8,3 +8,13 @@
 #
 ########################################################################
 
+# Launch Claude Code, defaulting to a scratch dir when not already inside
+# a project under ~/Developer/Projects.
+claude() {
+  local projects_dir="$HOME/Developer/Projects"
+  if [[ "$PWD" != "$projects_dir"/* && "$PWD" != "$projects_dir" ]]; then
+    cd "$projects_dir/scratch" || return
+  fi
+  command claude "$@"
+}
+
