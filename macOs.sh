@@ -2,6 +2,8 @@
 
 # Config sourced from https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
+printf "Applying macOS system preferences...\n"
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -12,16 +14,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
-# Menu bar: hide the Time Machine, Volume, and User icons
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-		"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-		"/System/Library/CoreServices/Menu Extras/User.menu"
-done
-defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -40,26 +32,12 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
-
-###############################################################################
-# SSD-specific tweaks                                                         #
-###############################################################################
-
-# Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
 
 
 
@@ -201,7 +179,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Dock and hot corners                                                        #
 ###############################################################################
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
@@ -222,12 +200,6 @@ defaults write com.apple.dock launchanim -bool false
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
-
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -353,4 +325,18 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 
+
+###############################################################################
+# Restart affected apps                                                      #
+###############################################################################
+
+for app in "Activity Monitor" \
+	"Dock" \
+	"Finder" \
+	"Photos" \
+	"SystemUIServer"; do
+	killall "${app}" &> /dev/null
+done
+
+printf "Done. Some changes (trackpad, keyboard, language/region) require a logout or restart to fully take effect.\n"
 
