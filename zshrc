@@ -164,4 +164,4 @@ source ~/.motd
 . "$HOME/.cargo/env"
 
 # Added by Antigravity
-export PATH="/Users/ryanmcdowell/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"

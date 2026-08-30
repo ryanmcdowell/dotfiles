@@ -30,16 +30,20 @@ if [[ "$OS" == 'Darwin' ]]; then
     
     # Add Homebrew to the path
     export PATH="/opt/homebrew/bin:$PATH"
-    
-    # Use the gnu utilities instead of the OSX defaults 
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    
+
+    # Resolve the Homebrew prefix dynamically so the overrides below work on
+    # both Intel (/usr/local) and Apple Silicon (/opt/homebrew) Macs.
+    BREW_PREFIX="$(brew --prefix)"
+
+    # Use the gnu utilities instead of the OSX defaults
+    export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+
     # Python Override Configuration
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+    export PATH="$BREW_PREFIX/opt/python/libexec/bin:$PATH"
 
     # Manpath Configuration
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    export MANPATH="/usr/local/man:$MANPATH"
+    export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
+    export MANPATH="$BREW_PREFIX/share/man:$MANPATH"
 
     # Java Configuration
     export JAVA_HOME=$(/usr/libexec/java_home)

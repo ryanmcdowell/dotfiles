@@ -5,7 +5,6 @@
 [core]
     editor = vim
     whitespace = fix,-indent-with-non-tab,trailing-space,lf-at-eol
-	hooksPath = /Users/ryan.mcdowell/.databricks/githooks
 
 [color]
     ui = true
@@ -37,3 +36,9 @@
 
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
+
+# Machine/work-specific overrides (e.g. hooksPath for a corporate repo) belong
+# in ~/.gitconfig.local, which is not tracked here. Git silently skips this
+# include if the file doesn't exist.
+[include]
+	path = ~/.gitconfig.local

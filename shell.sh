@@ -126,6 +126,23 @@ if [[ "$OS" == 'Darwin' ]]; then
     brew install protobuf
 
     ############################################
+    # GitHub
+    ############################################
+    # Set up SSH access to GitHub before anything below clones over SSH.
+    # 1. Generate the key (if it doesn't exist)
+    if [ ! -f ~/.ssh/id_ed25519 ]; then
+        ssh-keygen -t ed25519 -C "me@ryanmcdowell.io" -N "" -f ~/.ssh/id_ed25519
+    fi
+
+    # 2. Start the agent and add the key
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+
+    # 3. Use GH CLI to add the public key to your account
+    gh auth login
+    gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(hostname)-$(date +'%Y-%m-%d')"
+
+    ############################################
     # Terminal
     ############################################
 
@@ -261,16 +278,20 @@ fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ] || \
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Install zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+[ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ] || \
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Install zsh-history-substring-search
-git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+[ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search" ] || \
+    git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
 # Install zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+[ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ] || \
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 
 ############################################
@@ -279,23 +300,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # Install vim configuration
 printf "\n\nInstalling vim config...\n"
 source vim.sh
-
-
-############################################
-# GitHub
-############################################
-# 1. Generate the key (if it doesn't exist)
-if [ ! -f ~/.ssh/id_ed25519 ]; then
-    ssh-keygen -t ed25519 -C "me@ryanmcdowell.io" -N "" -f ~/.ssh/id_ed25519
-fi
-
-# 2. Start the agent and add the key
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-
-# 3. Use GH CLI to add the public key to your account
-gh auth login
-gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(hostname)-$(date +'%Y-%m-%d')"
 
 ############################################
 # Link

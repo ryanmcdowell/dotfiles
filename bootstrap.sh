@@ -24,16 +24,12 @@ if [[ "$OS" == 'Darwin' ]]; then
     source app.sh
 fi
 
-# Install npm packages
-printf "\n\nInstalling npm packages...\n"
-source npm.sh
-
 # Add a job to synch settings to the repo every night. Only add
 # the job if it does not already exist so the script is rerunnable.
 crontab -l | grep -q dotfiles/synch.sh
 if [[ $? == 1  ]]
 then
-    JOB="0 0 * * * .${REPO_DIR}/synch.sh"
+    JOB="0 0 * * * ${REPO_DIR}/synch.sh"
     (crontab -l 2>/dev/null; echo "${JOB}") | crontab -
 fi
 
